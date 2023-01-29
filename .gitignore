@@ -1,2 +1,7 @@
 .idea/
 server/target/
+server.ng/.vscode
+server.ng/angular/cache/
+server.ng/node_modules
+server.ng/.gitignore
+server.ng/.idea/

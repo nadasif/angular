@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/server.ng",
+            "outputPath": "dist/server-ng",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "server.ng:build:production"
+              "browserTarget": "server-ng:build:production"
             },
             "development": {
-              "browserTarget": "server.ng:build:development"
+              "browserTarget": "server-ng:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "server.ng:build"
+            "browserTarget": "server-ng:build"
           }
         },
         "test": {
