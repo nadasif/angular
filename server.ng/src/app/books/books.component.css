@@ -1,0 +1,15 @@
+h2{color: maroon;}
+
+ul.cart {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+}
+
+ul.cart li.item {
+    list-style: none;
+    margin: 3px;
+    text-align: center;
+    width: 15%;
+    cursor: pointer;
+}

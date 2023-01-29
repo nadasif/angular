@@ -1,0 +1,26 @@
+<h2>Books</h2>
+Books list here.
+<button [disabled]="btnDisabled" (click)="sort()">Let's see</button>
+
+<br/>Name: <input [(ngModel)]="newBook.name">
+<br/>Author: <input [(ngModel)]="newBook.author">
+<br/>Price: <input [(ngModel)]="newBook.price">
+<div>
+    <div>{{ newBook.name }} by {{ newBook.author }} ({{ newBook.price }})</div>
+
+</div>
+
+<ul class="cart">
+    <li class="item" *ngFor="let book of books">
+        <app-book (cartEvent)="addToCart($event)" [book]="book"></app-book>
+    </li>
+</ul>
+
+<h3>Names &amp; Price using ng-container</h3>
+<ul>
+    <ng-container *ngFor="let book of books; let i=index" >
+        <li><b>{{ i + 1}}</b>: {{book.name}} ({{book.price | currency}})</li>
+    </ng-container>
+
+</ul>
+
