@@ -1,1 +1,9 @@
-<p>cart works!</p>
+<h1>Shoppin Cart</h1>
+
+<div *ngIf="items().length == 0">There's no item in the cart.</div>
+
+<ul *ngIf="items().length > 0">
+    <li *ngFor="let item of items()">
+        {{item.book.name}} ({{item.quantity}})
+    </li>
+</ul>

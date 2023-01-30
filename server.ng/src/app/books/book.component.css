@@ -3,3 +3,4 @@ img{height: 200px; padding-right: 10px;}
 .name{font-weight: bolder;}
 .author{font-style: italic;}
 .price{color: red;}
+.qty{padding: 0px 10px;}

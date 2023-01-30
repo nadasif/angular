@@ -1,0 +1,6 @@
+<div><img [src]="book.imgSrc" [alt]="book.name"></div>
+<div class="name">{{ book.name }}</div>
+<div class="author">{{ book.author }}</div>
+<div class="price">{{book.price | currency}}</div>
+<button [disabled]="cartQty == 0" (click)="removeFromCart()"> - </button> <span class="qty">{{cartQty}}</span> <button
+    (click)="addToCart()"> + </button>
