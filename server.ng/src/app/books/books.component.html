@@ -1,14 +1,5 @@
 <h2>Books</h2>
 Books list here.
-<button [disabled]="btnDisabled" (click)="sort()">Let's see</button>
-
-<br/>Name: <input [(ngModel)]="newBook.name">
-<br/>Author: <input [(ngModel)]="newBook.author">
-<br/>Price: <input [(ngModel)]="newBook.price">
-<div>
-    <div>{{ newBook.name }} by {{ newBook.author }} ({{ newBook.price }})</div>
-
-</div>
 
 <ul class="cart">
     <li class="item" *ngFor="let book of books">
