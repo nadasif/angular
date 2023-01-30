@@ -1,5 +1,6 @@
 package io.getarrays.server.resource;
 
+import io.getarrays.server.enums.Status;
 import io.getarrays.server.model.Response;
 import io.getarrays.server.model.Server;
 import io.getarrays.server.service.ServerService;
@@ -10,9 +11,11 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Map;
 
+import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 
 @RestController
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:4200"})
 @RequestMapping("/server")
 @RequiredArgsConstructor
 public class ServerResource {
@@ -28,12 +31,28 @@ public class ServerResource {
                 .build();
     }
 
-    @PostMapping
+    @GetMapping("/{id}")
     @ResponseStatus(OK)
+    public Response getServer(@PathVariable Long id){
+        return responseBuilder("Server information")
+                .data(Map.of("server", service.get(id)))
+                .build();
+    }
+
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(OK)
+    public Response deleteServer(@PathVariable Long id){
+        return responseBuilder("Server information")
+                .data(Map.of("deleted", service.delete(id)))
+                .build();
+    }
+
+    @PostMapping
+    @ResponseStatus(CREATED)
     public Response saveServer(@RequestBody Server server) {
-        Server savedServer = service.save(server);
         return responseBuilder("Saving")
-                .data(Map.of("server", savedServer))
+                .data(Map.of("server", service.save(server)))
                 .build();
     }
 
@@ -41,7 +60,8 @@ public class ServerResource {
     @ResponseStatus(OK)
     public Response pingIpAddress(@PathVariable String ipAddress) throws IOException {
         Server server = service.ping(ipAddress);
-        return responseBuilder("Servers retrieved")
+        return responseBuilder(server.getStatus().equals(Status.SERVER_UP)?
+                "Ping success": "Ping failed")
                 .data(Map.of("server", server))
                 .build();
     }

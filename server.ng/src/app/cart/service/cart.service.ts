@@ -14,24 +14,29 @@ export class CartService {
     }
 
     add(book: Book) {
-        let qty = 1;
-        const item = this.cartItems.find(item => item.book === book);
+        const item = this.cartItems.find(item => item.book.id === book.id);
         if (item) {
-            qty = ++item.quantity;
+            ++item.quantity;
         } else {
-            this.cartItems.push(<CartItem>{ book: book, quantity: qty })
+            this.cartItems.push(<CartItem>{ book: book, quantity: 1 })
         }
-        return qty;
     }
 
-    remove(book: Book): number {
-        let qty = 0;
-        const item = this.cartItems.find(item => item.book === book);
+    remove(book: Book) {
+        const item = this.cartItems.find(item => item.book.id === book.id);
         if (item) {
-            qty = --item.quantity;
+            --item.quantity;
             this.cartItems = this.cartItems.filter(item => item.quantity > 0);
         }
-        return qty;
+    }
+
+    getQuantity(book: Book): number {
+        const item = this.cartItems.find(item => item.book.id === book.id);
+        if(item){
+            return item.quantity;
+        }else{
+            return 0;
+        }
     }
 
 }

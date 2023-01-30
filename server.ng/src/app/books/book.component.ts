@@ -5,19 +5,26 @@ import { Book } from './interface/book';
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
-  styleUrls: ['./book.component.css']
+  styleUrls: ['./book.component.css'],
 })
 export class BookComponent {
   @Input() book: Book = {} as Book;
-  cartQty: number = 0;
 
   constructor(private cartService: CartService) { }
 
   addToCart() {
-    this.cartQty = this.cartService.add(this.book);
+    this.cartService.add(this.book);
   }
 
   removeFromCart() {
-    this.cartQty = this.cartService.remove(this.book);
+    this.cartService.remove(this.book);
+  }
+
+  cartQty(): number{
+    return this.cartService.getQuantity(this.book);
+  }
+
+  imgSrc(): string {
+    return `https://m.media-amazon.com/images/I/${this.book.imgId}L._AC_UL320_.jpg`;
   }
 }

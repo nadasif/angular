@@ -1,4 +1,14 @@
-<h1>First Anuglar App</h1>
+<nav class="flex justify-between p-4 bg-blue-800 text-white">
+    <div>
+        <a routerLink="/">Books</a>
+    </div>
+    <div>
+        <a class="mx-2" routerLink="/cart">My Cart</a>
+        <a class="mx-2" routerLink="/login">Login</a>
+        <a class="mx-2" routerLink="/register">Register</a>
+    </div>
+</nav>
 
-<app-books></app-books>
-<app-cart (cartEvent)="add($event)"></app-cart>
+<div class="p-5">
+    <router-outlet></router-outlet>
+</div>

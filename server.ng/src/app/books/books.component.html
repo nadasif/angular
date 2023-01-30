@@ -1,6 +1,7 @@
-<h2>Books</h2>
-<ul class="cart">
-    <li class="item" *ngFor="let book of books">
-        <app-book [book]="book"></app-book>
-    </li>
-</ul>
+<div class="w-full min-h-screen">
+    <div *ngIf="obs$ | async" class="flex flex-wrap justify-center">
+        <div *ngFor="let book of books" class="flex flex-col bg-white m-4 p-6 rounded-lg shadow-md text-center sm:w-60">
+            <app-book [book]="book"></app-book>
+        </div>
+    </div>
+</div>
